@@ -12,7 +12,7 @@ Install Zifera script on your website.
 
 == Description ==
 
-This plugin will embed the external Zifera script in the footer of your Wordpress website. The Zifera script contains a small piece of code that sends the current page URL to the Zifera server to calculate the carbon footprint. This request is completely anonymous and does not contain any personal information. The only data sent is the URL of the page that your website visitor is on. It is compliant with the GDPR law and does not even require a cookie banner. You can read more about Zifera and how it works on https://zifera.io. 
+This plugin will embed the external Zifera script in the footer of your Wordpress website. The Zifera script contains a small piece of code that sends the current page URL to the Zifera server to calculate the carbon footprint. This request is completely anonymous and does not contain any personal information. The only data sent is the URL of the page that your website visitor is on. It is compliant with the GDPR law and does not even require a cookie banner. You can read more about Zifera and how it works on https://zifera.io. You can also view our privacy policy here: https://zifera.io/privacy-policy.
 
 == Installation ==
 
