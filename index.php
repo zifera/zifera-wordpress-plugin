@@ -109,25 +109,23 @@ class Zifera {
 if ( is_admin() )
 	$zifera = new Zifera();
 
-/* 
- * Retrieve this value with:
- * $zifera_options = get_option( 'zifera_option_name' ); // Array of All Options
- * $key_0 = $zifera_options['key_0']; // Key
- * $enable_1 = $zifera_options['enable_1']; // Enable
- */
-
-add_action( 'wp_footer', 'zifera_footer_script' );
-function zifera_footer_script(){
-  $zifera_options = get_option( 'zifera_option_name' );
-  if ($zifera_options['key_0'] && $zifera_options['enable_1']) {
-  ?>
-  <script async data-zifera-key="<?php echo $zifera_options['key_0'] ;?>" src="https://stats.zifera.nl/scripts/stats.latest.js"></script>
-  <?php }
-}
-
 function zifera_footer_script_embed() {
-    wp_enqueue_script( 'zifera-script', 'https://stats.zifera.nl/scripts/stats.latest.js');
+    $zifera_options = get_option( 'zifera_option_name' );
+    if ($zifera_options['key_0'] && $zifera_options['enable_1']) {
+    wp_enqueue_script( 'zifera_script', 'https://stats.zifera.nl/scripts/stats.latest.js', array(), null, true);
+    }
 }
 add_action( 'wp_enqueue_scripts', 'zifera_footer_script_embed' );
+
+add_filter( 'script_loader_tag', 'add_attributes_to_script', 10, 3 );
+
+function add_attributes_to_script( $tag, $handle, $source ) {
+    $zifera_options = get_option( 'zifera_option_name' );
+    if ( 'zifera_script' === $handle ) {
+        $tag = '<script async data-zifera-key="' . $zifera_options['key_0'] . '" src="' . $source . '"></script>';
+    }
+
+    return $tag;
+}
 
 ;?>
