@@ -117,9 +117,9 @@ function zifera_footer_script_embed() {
 }
 add_action( 'wp_enqueue_scripts', 'zifera_footer_script_embed' );
 
-add_filter( 'script_loader_tag', 'add_attributes_to_script', 10, 3 );
+add_filter( 'script_loader_tag', 'zifera_add_attributes_to_script', 10, 3 );
 
-function add_attributes_to_script( $tag, $handle, $source ) {
+function zifera_add_attributes_to_script( $tag, $handle, $source ) {
     $zifera_options = get_option( 'zifera_option_name' );
     if ( 'zifera_script' === $handle ) {
         $tag = '<script async data-zifera-key="' . $zifera_options['key_0'] . '" src="' . $source . '"></script>';
